@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class BankAccountSystem {
 	public static void main(String[] args) {
+		// declare and initializes variables
 		Scanner input = new Scanner(System.in);
 		int choice;
 		double depo, with; 
@@ -9,20 +10,25 @@ public class BankAccountSystem {
 		String name = " ";
 		String accountNum = " ";
 		BankAccount account = new BankAccount(accountNum, name, balance);
-		
+
+		//print out welcome message
+		System.out.println("Welcome to Coop Banking! How can we help you today?");
+
+		// loop while user uses banking app
 		do {
-			System.out.print("Welcome to Coop Banking! How can we help you today?\n"
-					+ "1. Create Account\n2. Check Balance\n3. Deposit\n4. Withdraw\n5. Exit\nYour Selection: ");
+			System.out.print("1. Create Account\n2. Check Balance\n3. Deposit\n4. Withdraw\n5. Exit\nYour Selection: ");
 			choice = input.nextInt();
 			
 				switch (choice) {
+				// creates a bank account using name and acount number
 				case 1:
 					System.out.print("Enter your first name: ");
 					name = input.next();
 					account.setName(name);
 					System.out.print("Create a 8-digit account number: ");
 					accountNum = input.next();
-					
+
+					// check to make sure there are 8 numbers
 					if (accountNum.length() < 8) {
 						System.out.println("Error account number too short.");
 					} else if (accountNum.length() > 8) {
@@ -35,7 +41,8 @@ public class BankAccountSystem {
 						account.setAccountNum(accountNum);
 					}
 					break;
-					
+
+				//checks account balance		
 				case 2:
 					System.out.print("Enter your account number: ");
 					accountNum = input.next();
@@ -45,7 +52,8 @@ public class BankAccountSystem {
 						System.out.println("Invalid account number.");
 					}
 					break;
-					
+
+				// allows user to deposit money		
 				case 3:
 					System.out.print("Enter your account number: ");		
 					accountNum = input.next();
@@ -54,7 +62,8 @@ public class BankAccountSystem {
 					account.deposit(depo);
 					System.out.printf("%s, your new balance is $%.2f%n", account.getName(), account.getBalance());
 					break;
-					
+
+				// allows user to withdraw money		
 				case 4:
 					System.out.print("Enter your account number: ");		
 					accountNum = input.next();
@@ -63,7 +72,8 @@ public class BankAccountSystem {
 					account.withdraw(with);
 					System.out.printf("%s, your new balance is $%.2f%n", account.getName(), account.getBalance());
 					break;
-					
+
+				// exits		
 				case 5:
 					break;
 					
